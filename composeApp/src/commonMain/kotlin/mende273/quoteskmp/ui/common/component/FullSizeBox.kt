@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import mende273.quoteskmp.theme.spacing
+import mende273.quoteskmp.ui.theme.spacing
 
 @Composable
 fun FullSizeBox(

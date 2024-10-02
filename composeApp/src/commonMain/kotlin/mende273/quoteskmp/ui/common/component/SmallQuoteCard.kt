@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mende273.quoteskmp.domain.model.Quote
-import mende273.quoteskmp.theme.TertiaryColor
-import mende273.quoteskmp.theme.mediumTextStyle
-import mende273.quoteskmp.theme.spacing
+import mende273.quoteskmp.ui.theme.TertiaryColor
+import mende273.quoteskmp.ui.theme.mediumTextStyle
+import mende273.quoteskmp.ui.theme.spacing
 
 @Composable
 fun SmallQuoteCard(quote: Quote, onNavigateToQuoteDetails: (Quote) -> Unit) {

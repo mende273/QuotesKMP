@@ -14,11 +14,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import mende273.quoteskmp.theme.PrimaryBackgroundColor
-import mende273.quoteskmp.theme.TertiaryColor
-import mende273.quoteskmp.theme.largeTextStyle
-import mende273.quoteskmp.theme.mediumTextStyle
-import mende273.quoteskmp.theme.spacing
+import mende273.quoteskmp.ui.theme.PrimaryBackgroundColor
+import mende273.quoteskmp.ui.theme.TertiaryColor
+import mende273.quoteskmp.ui.theme.largeTextStyle
+import mende273.quoteskmp.ui.theme.mediumTextStyle
+import mende273.quoteskmp.ui.theme.spacing
 
 @Composable
 fun LargeQuoteCard(content: String, author: String) {

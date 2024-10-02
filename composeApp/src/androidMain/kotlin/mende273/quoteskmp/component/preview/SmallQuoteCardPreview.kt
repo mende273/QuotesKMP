@@ -5,7 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import mende273.quoteskmp.component.parameter.QuotePreviewParameter
 import mende273.quoteskmp.domain.model.Quote
-import mende273.quoteskmp.theme.QuotesKmpTheme
+import mende273.quoteskmp.ui.theme.QuotesKmpTheme
 import mende273.quoteskmp.ui.common.component.SmallQuoteCard
 
 @Preview
