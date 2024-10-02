@@ -15,12 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import mende273.quoteskmp.theme.PrimaryBackgroundColor
-import mende273.quoteskmp.theme.QuotesKmpTheme
 import mende273.quoteskmp.theme.TertiaryColor
 import mende273.quoteskmp.theme.largeTextStyle
 import mende273.quoteskmp.theme.mediumTextStyle
 import mende273.quoteskmp.theme.spacing
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LargeQuoteCard(content: String, author: String) {
@@ -53,20 +51,5 @@ fun LargeQuoteCard(content: String, author: String) {
                 style = mediumTextStyle()
             )
         }
-    }
-}
-@Preview
-@Composable
-private fun LargeQuoteCardPreview() {
-    QuotesKmpTheme {
-        LargeQuoteCard("this is a preview quote", "author name")
-    }
-}
-
-@Preview
-@Composable
-private fun LargeQuoteCardDarkPreview() {
-    QuotesKmpTheme(darkTheme = true) {
-        LargeQuoteCard("this is a preview quote", "author name")
     }
 }

@@ -18,11 +18,3 @@ fun ErrorText(reason: String) {
         textAlign = TextAlign.Center
     )
 }
-
-@Preview
-@Composable
-private fun ErrorTextPreview() {
-    QuotesKmpTheme {
-        ErrorText(reason = "text to display")
-    }
-}

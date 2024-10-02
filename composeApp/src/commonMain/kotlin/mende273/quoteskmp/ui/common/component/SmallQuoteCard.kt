@@ -14,14 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import mende273.quoteskmp.ui.common.preview.parameter.QuotePreviewParameter
 import mende273.quoteskmp.domain.model.Quote
-import mende273.quoteskmp.theme.QuotesKmpTheme
 import mende273.quoteskmp.theme.TertiaryColor
 import mende273.quoteskmp.theme.mediumTextStyle
 import mende273.quoteskmp.theme.spacing
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 
 @Composable
 fun SmallQuoteCard(quote: Quote, onNavigateToQuoteDetails: (Quote) -> Unit) {
@@ -46,29 +42,5 @@ fun SmallQuoteCard(quote: Quote, onNavigateToQuoteDetails: (Quote) -> Unit) {
                 style = mediumTextStyle()
             )
         }
-    }
-}
-
-@Preview
-@Composable
-private fun SmallQuoteCardPreview(
-    @PreviewParameter(QuotePreviewParameter::class) quote: Quote
-) {
-    SmallQuoteCard(
-        quote = quote,
-        onNavigateToQuoteDetails = {}
-    )
-}
-
-@Preview
-@Composable
-private fun SmallQuoteCardDarkPreview(
-    @PreviewParameter(QuotePreviewParameter::class) quote: Quote
-) {
-    QuotesKmpTheme(darkTheme = true) {
-        SmallQuoteCard(
-            quote = quote,
-            onNavigateToQuoteDetails = {}
-        )
     }
 }
