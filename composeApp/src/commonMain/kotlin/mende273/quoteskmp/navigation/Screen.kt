@@ -40,8 +40,8 @@ sealed interface Screen {
             )
         }
 
-        fun getRoute(quote: Quote):String{
-           return "quote_detail/${quote.id}/${quote.content}/${quote.author}"
+        fun getRoute(quote: Quote): String {
+            return "quote_detail/${quote.id}/${quote.content}/${quote.author}"
         }
     }
 }
