@@ -1,4 +1,4 @@
-package mende273.quoteskmp.component.preview
+package mende273.quoteskmp.component.preview.component
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
