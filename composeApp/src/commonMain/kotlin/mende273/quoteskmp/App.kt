@@ -22,50 +22,52 @@ import mende273.quoteskmp.ui.common.component.bottombar.BottomNavigationBar
 import mende273.quoteskmp.ui.common.component.bottombar.BottomNavigationItem
 import mende273.quoteskmp.ui.theme.QuotesKmpTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.KoinContext
+
 
 @Composable
 @Preview
 fun App() {
-    // val greeting = remember { Greeting().greet() }
-    // Text("Compose: $greeting")
+    KoinContext {
 
-    val navController = rememberNavController()
+        val navController = rememberNavController()
 
-    val bottomNavigationItems = enumValues<BottomNavigationItem>()
+        val bottomNavigationItems = enumValues<BottomNavigationItem>()
 
-    var isNavigationBarVisible by remember { mutableStateOf(false) }
+        var isNavigationBarVisible by remember { mutableStateOf(false) }
 
-    val currentNavigationBarDestination = navController
-        .currentBackStackEntryAsState()
-        .value
-        .currentDestinationFromNavigationBar(
-            enumValues<BottomNavigationItem>()
-                .map { it.route }
-        )
+        val currentNavigationBarDestination = navController
+            .currentBackStackEntryAsState()
+            .value
+            .currentDestinationFromNavigationBar(
+                enumValues<BottomNavigationItem>()
+                    .map { it.route }
+            )
 
-    isNavigationBarVisible = currentNavigationBarDestination != null
+        isNavigationBarVisible = currentNavigationBarDestination != null
 
-    QuotesKmpTheme {
-        Scaffold(
-            content = {
-                AppNavigation(
-                    navHostController = navController
-                )
-            },
-            bottomBar = {
-                AnimatedVisibility(
-                    visible = isNavigationBarVisible,
-                    enter = slideInVertically(initialOffsetY = { it }),
-                    exit = slideOutVertically(targetOffsetY = { it })
-                ) {
-                    BottomNavigationBar(
-                        currentNavigationBarDestination,
-                        bottomNavigationItems,
-                        onNavigateToScreen = { navController.singleTopNavigate(it) }
+        QuotesKmpTheme {
+            Scaffold(
+                content = {
+                    AppNavigation(
+                        navHostController = navController
                     )
+                },
+                bottomBar = {
+                    AnimatedVisibility(
+                        visible = isNavigationBarVisible,
+                        enter = slideInVertically(initialOffsetY = { it }),
+                        exit = slideOutVertically(targetOffsetY = { it })
+                    ) {
+                        BottomNavigationBar(
+                            currentNavigationBarDestination,
+                            bottomNavigationItems,
+                            onNavigateToScreen = { navController.singleTopNavigate(it) }
+                        )
+                    }
                 }
-            }
-        )
+            )
+        }
     }
 }
 
