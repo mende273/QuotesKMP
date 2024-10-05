@@ -2,8 +2,10 @@ package mende273.quoteskmp.ui.feature.favourites
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.common.component.FullSizeBox
 import mende273.quoteskmp.ui.common.component.QuotesColumn
@@ -17,39 +19,14 @@ import quoteskmp.composeapp.generated.resources.screen_favourites
 @Composable
 fun FavouritesScreen(
     modifier: Modifier = Modifier,
-    //  viewModel: FavouritesViewModel,
+    viewModel: FavouritesViewModel,
     onNavigateToQuoteDetails: (Quote) -> Unit
 ) {
-    //val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    val dumbUiState = UIState.SuccessWithData(
-        listOf(
-            Quote(
-                id = 1,
-                content = "Everything comes to him who hustles while he waits.",
-                author = "Thomas Edison"
-            ),
-            Quote(
-                id = 2,
-                content = "Change in all things is sweet.",
-                author = "Aristotle"
-            ),
-            Quote(
-                id = 3,
-                content = "I never think of the future - it comes soon enough.",
-                author = "Albert Einstein"
-            ),
-            Quote(
-                id = 4,
-                content = "As a cure for worrying, work is better than whisky.",
-                author = "Thomas Edison"
-            )
-        )
-    )
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     FavoritesScreenContents(
         modifier = modifier,
-        uiState = dumbUiState,
+        uiState = uiState,
         onNavigateToQuoteDetails = onNavigateToQuoteDetails
     )
 }

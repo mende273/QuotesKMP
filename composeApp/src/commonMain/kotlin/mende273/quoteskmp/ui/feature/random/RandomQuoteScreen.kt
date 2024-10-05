@@ -6,6 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.common.component.FullSizeBox
 import mende273.quoteskmp.ui.common.component.LargeQuoteCard
@@ -21,19 +22,11 @@ import quoteskmp.composeapp.generated.resources.screen_random_quote
 
 @Composable
 fun RandomQuoteScreen(
-    // viewModel: RandomQuoteViewModel,
+    viewModel: RandomQuoteViewModel,
     onNavigateBack: () -> Unit
 ) {
 
-    val dumbUiState = UIState.SuccessWithData(
-        Quote(
-            1,
-            "Everything comes to him who hustles while he waits.",
-            "Thomas Edison"
-        )
-    )
-
-    //  val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     val menuItems by remember {
         mutableStateOf(
@@ -45,16 +38,14 @@ fun RandomQuoteScreen(
     }
 
     LaunchedEffect(Unit) {
-        //viewModel.getRandomQuote()
+        viewModel.getRandomQuote()
     }
 
     RandomQuoteScreenContents(
-        uiState = dumbUiState,
+        uiState = uiState,
         menuItem = menuItems,
         onNavigateBack = onNavigateBack,
-        onGetNewRandomQuote = {
-            // viewModel::getRandomQuote
-        }
+        onGetNewRandomQuote = viewModel::getRandomQuote
     )
 }
 

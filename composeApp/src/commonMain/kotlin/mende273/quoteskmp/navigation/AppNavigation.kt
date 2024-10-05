@@ -8,11 +8,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.feature.detail.QuoteDetailScreen
+import mende273.quoteskmp.ui.feature.detail.QuoteDetailViewModel
 import mende273.quoteskmp.ui.feature.favourites.FavouritesScreen
+import mende273.quoteskmp.ui.feature.favourites.FavouritesViewModel
 import mende273.quoteskmp.ui.feature.home.HomeScreen
+import mende273.quoteskmp.ui.feature.home.HomeViewModel
 import mende273.quoteskmp.ui.feature.random.RandomQuoteScreen
+import mende273.quoteskmp.ui.feature.random.RandomQuoteViewModel
 import mende273.quoteskmp.ui.feature.today.QuoteOfTheDayScreen
+import mende273.quoteskmp.ui.feature.today.QuoteOfTheDayViewModel
+import org.koin.compose.viewmodel.koinNavViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun AppNavigation(
     navHostController: NavHostController
@@ -24,6 +32,7 @@ fun AppNavigation(
         composable<Screen.Favourites> {
             FavouritesScreen(
                 modifier = Modifier.fillMaxSize(),
+                viewModel = koinNavViewModel<FavouritesViewModel>(),
                 onNavigateToQuoteDetails = {
                     navHostController.navigate(Screen.QuoteDetail.getRoute(quote = it))
                 }
@@ -42,6 +51,7 @@ fun AppNavigation(
                 )
             }
             QuoteDetailScreen(
+                viewModel = koinNavViewModel<QuoteDetailViewModel>(),
                 quote = quote,
                 onNavigateBack = {
                     navHostController.navigateUp()
@@ -51,6 +61,7 @@ fun AppNavigation(
 
         composable<Screen.RandomQuote> {
             RandomQuoteScreen(
+                viewModel = koinNavViewModel<RandomQuoteViewModel>(),
                 onNavigateBack = {
                     navHostController.navigateUp()
                 }
@@ -58,12 +69,15 @@ fun AppNavigation(
         }
 
         composable<Screen.QuoteOfTheDay> {
-            QuoteOfTheDayScreen()
+            QuoteOfTheDayScreen(
+                viewModel = koinNavViewModel<QuoteOfTheDayViewModel>()
+            )
         }
 
         composable<Screen.Home> {
             HomeScreen(
                 modifier = Modifier.fillMaxSize(),
+                viewModel = koinNavViewModel<HomeViewModel>(),
                 onNavigateToQuoteDetails = {
                     navHostController.navigate(Screen.QuoteDetail.getRoute(quote = it))
                 },
