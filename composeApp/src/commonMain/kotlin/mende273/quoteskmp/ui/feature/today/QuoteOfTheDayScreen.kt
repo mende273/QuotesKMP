@@ -3,6 +3,8 @@ package mende273.quoteskmp.ui.feature.today
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.common.component.FullSizeBox
 import mende273.quoteskmp.ui.common.component.LargeQuoteCard
@@ -15,24 +17,16 @@ import quoteskmp.composeapp.generated.resources.screen_quote_today
 
 @Composable
 fun QuoteOfTheDayScreen(
-    // viewModel: QuoteOfTheDayViewModel
+    viewModel: QuoteOfTheDayViewModel
 ) {
     LaunchedEffect(Unit) {
-        //       viewModel.getRandomQuote()
+        viewModel.getRandomQuote()
     }
 
-    // val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    val dumbUiState = UIState.SuccessWithData<Quote>(
-        Quote(
-            1,
-            "Everything comes to him who hustles while he waits.",
-            "Thomas Edison"
-        )
-    )
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     QuoteOfTheDayScreenContents(
-        uiState = dumbUiState
+        uiState = uiState
     )
 }
 
