@@ -20,7 +20,7 @@ fun QuoteOfTheDayScreen(
     viewModel: QuoteOfTheDayViewModel
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getRandomQuote()
+        viewModel.getQuoteOfTheDay()
     }
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()

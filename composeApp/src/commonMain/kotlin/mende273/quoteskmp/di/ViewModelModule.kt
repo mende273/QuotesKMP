@@ -9,9 +9,9 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { HomeViewModel() }
-    viewModel { QuoteDetailViewModel() }
-    viewModel { FavouritesViewModel() }
-    viewModel { RandomQuoteViewModel() }
-    viewModel { QuoteOfTheDayViewModel() }
+    viewModel { HomeViewModel(get()) }
+    viewModel { QuoteDetailViewModel(get()) }
+    viewModel { FavouritesViewModel(get()) }
+    viewModel { RandomQuoteViewModel(get()) }
+    viewModel { QuoteOfTheDayViewModel(get()) }
 }
