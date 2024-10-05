@@ -5,5 +5,5 @@ import mende273.quoteskmp.domain.repository.remote.RemoteRepository
 import org.koin.dsl.module
 
 val remoteRepositoryModule = module {
-    single<RemoteRepository> { RemoteRepositoryImpl() }
+    single<RemoteRepository> { RemoteRepositoryImpl(get(), get()) }
 }

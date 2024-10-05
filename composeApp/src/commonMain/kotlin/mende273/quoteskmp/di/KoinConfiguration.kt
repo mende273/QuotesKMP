@@ -9,6 +9,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
         modules(
             viewModelModule,
             localRepositoryModule,
-            remoteRepositoryModule
+            remoteRepositoryModule,
+            dispatchersModule,
+            remoteDataSourceModule
         )
     }

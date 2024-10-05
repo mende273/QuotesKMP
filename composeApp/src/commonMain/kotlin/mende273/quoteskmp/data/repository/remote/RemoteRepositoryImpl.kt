@@ -1,52 +1,35 @@
 package mende273.quoteskmp.data.repository.remote
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
+import mende273.quoteskmp.data.source.remote.RemoteDataSource
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.domain.repository.remote.RemoteRepository
 
-class RemoteRepositoryImpl :
+class RemoteRepositoryImpl(
+    private val remoteDataSource: RemoteDataSource,
+    private val ioDispatcher: CoroutineDispatcher
+) :
     RemoteRepository {
 
     override suspend fun getQuotes(): Result<List<Quote>> =
-        Result.success(
-            listOf(
-                Quote(
-                    id = 1,
-                    content = "Everything comes to him who hustles while he waits.",
-                    author = "Thomas Edison"
-                ),
-                Quote(
-                    id = 2,
-                    content = "Change in all things is sweet.",
-                    author = "Aristotle"
-                ),
-                Quote(
-                    id = 3,
-                    content = "I never think of the future - it comes soon enough.",
-                    author = "Albert Einstein"
-                ),
-                Quote(
-                    id = 4,
-                    content = "As a cure for worrying, work is better than whisky.",
-                    author = "Thomas Edison"
-                )
-            )
-        )
+        withContext(ioDispatcher) {
+            runCatching {
+                remoteDataSource.getQuotes().map { Quote(it.c ?: 0, it.q, it.a) }
+            }
+        }
 
     override suspend fun getRandomQuote(): Result<Quote> =
-        Result.success(
-            Quote(
-                1,
-                "Everything comes to him who hustles while he waits.",
-                "Thomas Edison"
-            )
-        )
+        withContext(ioDispatcher) {
+            runCatching {
+                remoteDataSource.getRandomQuote().map { Quote(it.c ?: 0, it.q, it.a) }.first()
+            }
+        }
 
     override suspend fun getQuoteOfTheDay(): Result<Quote> =
-        Result.success(
-            Quote(
-                1,
-                "Everything comes to him who hustles while he waits.",
-                "Thomas Edison"
-            )
-        )
+        withContext(ioDispatcher) {
+            runCatching {
+                remoteDataSource.getQuoteOfTheDay().map { Quote(it.c ?: 0, it.q, it.a) }.first()
+            }
+        }
 }
