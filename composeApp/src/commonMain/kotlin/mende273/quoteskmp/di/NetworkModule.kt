@@ -25,6 +25,7 @@ val networkModule = module {
             defaultRequest {
                 url("https://zenquotes.io/api/")
                 contentType(ContentType.Application.Json)
+                accept(ContentType.Application.Json)
             }
             install(HttpTimeout) {
                 socketTimeoutMillis = 60_000
@@ -60,11 +61,6 @@ val networkModule = module {
 
             install(DefaultRequest) {
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
-            }
-
-            defaultRequest {
-                contentType(ContentType.Application.Json)
-                accept(ContentType.Application.Json)
             }
         }
     }
