@@ -11,6 +11,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
             localRepositoryModule,
             remoteRepositoryModule,
             dispatchersModule,
-            remoteDataSourceModule
+            remoteDataSourceModule,
+            networkModule
         )
     }

@@ -41,6 +41,9 @@ kotlin {
             // koin
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            // Ktor
+            implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -53,16 +56,35 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.androidx.navigation.compose)
 
+            // serialization
             implementation(libs.kotlinx.serialization.json)
 
             // koin
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
+
+            // ktor
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.json)
+            implementation(libs.ktor.logging)
+            implementation(libs.ktor.negotiation)
+            implementation(libs.kotlinx.serialization.json)
+
+            //Kermit logging
+            implementation(libs.kermit)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+            // ktor
+            implementation(libs.ktor.client.okhttp)
+        }
+        iosMain.dependencies {
+
+            // Ktor
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
