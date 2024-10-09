@@ -90,9 +90,6 @@ private fun NavBackStackEntry?.currentDestinationFromNavigationBar(
 
 private fun NavHostController.singleTopNavigate(screen: Screen) {
     navigate(screen) {
-        popUpTo(graph.findStartDestination().id) {
-            saveState = true
-        }
         launchSingleTop = true
         restoreState = true
     }
