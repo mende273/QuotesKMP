@@ -14,7 +14,7 @@ expect fun databaseDriverPlatformModule(): Module
 
 val databaseModule = module {
     single { createDatabase(driver = get()) }
-    single { LocalDataSource(database = get()) }
+    single { LocalDataSource(database = get(), ioDispatcher = get()) }
 }
 
 private fun createDatabase(driver: SqlDriver): AppDatabase {
