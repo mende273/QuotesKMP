@@ -24,8 +24,10 @@ class FavouritesViewModel(
     }
 
     private suspend fun getAllFavourites() {
-        localRepository.getAllFavouriteQuotes().collectLatest {
-            _uiState.value = it.toUiState()
+        viewModelScope.launch {
+            localRepository.getAllFavouriteQuotes().collectLatest {
+                _uiState.value = it.toUiState()
+            }
         }
     }
 }

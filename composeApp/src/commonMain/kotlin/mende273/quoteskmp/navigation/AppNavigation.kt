@@ -45,7 +45,7 @@ fun AppNavigation(
         ) { backStack ->
             val quote = with(backStack.arguments) {
                 Quote(
-                    id = this?.getInt(Screen.QuoteDetail.ARGUMENT_ID) ?: 0,
+                    id = this?.getLong(Screen.QuoteDetail.ARGUMENT_ID) ?: 0,
                     content = this?.getString(Screen.QuoteDetail.ARGUMENT_CONTENT) ?: "",
                     author = this?.getString(Screen.QuoteDetail.ARGUMENT_AUTHOR) ?: ""
                 )
