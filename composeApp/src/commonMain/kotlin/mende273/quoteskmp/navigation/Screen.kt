@@ -34,7 +34,7 @@ sealed interface Screen {
 
         fun getNavArguments(): List<NamedNavArgument> {
             return listOf(
-                navArgument(ARGUMENT_ID) { type = NavType.IntType },
+                navArgument(ARGUMENT_ID) { type = NavType.LongType },
                 navArgument(ARGUMENT_CONTENT) { type = NavType.StringType },
                 navArgument(ARGUMENT_AUTHOR) { type = NavType.StringType }
             )

@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class QuoteDTO(
-    val c: Int?,
+    val c: Long?,
     val q: String,
     val a: String
 )

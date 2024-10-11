@@ -1,0 +1,21 @@
+CREATE TABLE quoteEntity (
+               id INTEGER PRIMARY KEY NOT NULL,
+               content TEXT NOT NULL,
+               author TEXT NOT NULL
+             );
+
+selectAll:
+SELECT *
+FROM quoteEntity;
+
+selectById:
+SELECT *
+FROM quoteEntity
+WHERE id = :id;
+
+insert:
+INSERT OR REPLACE INTO quoteEntity(id, content,author)
+VALUES ?;
+
+delete:
+DELETE FROM quoteEntity WHERE id == ?;

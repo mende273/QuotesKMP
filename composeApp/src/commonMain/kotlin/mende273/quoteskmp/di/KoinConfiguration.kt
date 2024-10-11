@@ -12,6 +12,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
             remoteRepositoryModule,
             dispatchersModule,
             remoteDataSourceModule,
-            networkModule
+            networkModule,
+            databaseModule,
+            databaseDriverPlatformModule()
         )
     }

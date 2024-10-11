@@ -1,6 +1,4 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,13 +6,15 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
         }
     }
 
@@ -44,6 +44,9 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.android)
+
+            // SqlDelight
+            implementation(libs.sqldelight.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -73,6 +76,9 @@ kotlin {
 
             //Kermit logging
             implementation(libs.kermit)
+
+            // sqlDelight coroutines
+            implementation(libs.sqldelight.coroutines)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -80,11 +86,17 @@ kotlin {
 
             // ktor
             implementation(libs.ktor.client.okhttp)
+
+            // sqlDelight
+            implementation(libs.sqldelight.jvm)
         }
         iosMain.dependencies {
 
             // Ktor
             implementation(libs.ktor.client.darwin)
+
+            // sqlDelight
+            implementation(libs.sqldelight.native)
         }
     }
 }
@@ -115,14 +127,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
         compose = true
     }
     dependencies {
         debugImplementation(compose.uiTooling)
+    }
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName = "mende273.quoteskmp.database"
+        }
     }
 }
 
