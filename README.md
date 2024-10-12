@@ -4,14 +4,19 @@
 ![Android](https://img.shields.io/badge/Api%2026+-3DDC84?logo=android&logoColor=white&style=for-the-badge)
 ![Release](https://img.shields.io/github/v/release/mende273/quotesKMP?logo=github&color=lightblue&logoColor=white&labelColor=black&style=for-the-badge)
 
-Android application demonstrating the use of Compose Multiplatform for sharing UIs across Android, iOS and desktop, using Koin, Ktor and SQLDelight.
+Android application demonstrating the use of Compose Multiplatform for sharing UIs across Android, iOS and desktop, using Koin, Ktor and SQLDelight. It also supports light and dark theme.
+
+For Android version only, refer to this project [QuotesCompose](https://github.com/mende273/QuotesCompose)
 
 ## App Screenshots
 | Android | iOS |
 | --- | --- |
-| <img src="/screenshots/android-sc.png" width="250"> | <img src="/screenshots/ios-sc.png" width="250"> |
-| Desktop |  |
-| <img src="/screenshots/desktop-sc.png" width="250"> |
+| <img src="/screenshots/android-sc.jpg" width="250"> | <img src="/screenshots/ios-sc.jpg" width="250"> |
+
+
+| Desktop |
+| --- |
+| <img src="/screenshots/desktop-sc.jpg" width="526"> |
 
 ## Api
 The project is using the free api from [zenquotes.io](https://zenquotes.io/)
