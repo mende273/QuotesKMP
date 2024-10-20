@@ -10,8 +10,8 @@ navigation-compose = "2.8.0-alpha10"
 koin = "4.0.0"
 ktor = "3.0.0"
 kermit = "2.0.4"
-sqlDelight = "2.0.2"
-navite-driver = "2.0.2"
+sql-delight = "2.0.2"
+sql-delight-native-driver = "2.0.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
@@ -43,10 +43,10 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
 # sqlDelight
-sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
-sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "navite-driver" }
-sqldelight-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
-sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
+sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sql-delight" }
+sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sql-delight-native-driver" }
+sqldelight-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sql-delight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sql-delight" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -55,4 +55,4 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sql-delight" }
