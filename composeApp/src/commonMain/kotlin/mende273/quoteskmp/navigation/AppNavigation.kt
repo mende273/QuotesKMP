@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.feature.detail.QuoteDetailScreen
 import mende273.quoteskmp.ui.feature.detail.QuoteDetailViewModel
@@ -34,25 +35,16 @@ fun AppNavigation(
                 modifier = Modifier.fillMaxSize(),
                 viewModel = koinNavViewModel<FavouritesViewModel>(),
                 onNavigateToQuoteDetails = {
-                    navHostController.navigate(Screen.QuoteDetail.getRoute(quote = it))
+                    navHostController.navigate(Screen.QuoteDetail(it.id, it.content, it.author))
                 }
             )
         }
 
-        composable(
-            route = Screen.QuoteDetail.ROUTE,
-            arguments = Screen.QuoteDetail.getNavArguments()
-        ) { backStack ->
-            val quote = with(backStack.arguments) {
-                Quote(
-                    id = this?.getLong(Screen.QuoteDetail.ARGUMENT_ID) ?: 0,
-                    content = this?.getString(Screen.QuoteDetail.ARGUMENT_CONTENT) ?: "",
-                    author = this?.getString(Screen.QuoteDetail.ARGUMENT_AUTHOR) ?: ""
-                )
-            }
+        composable<Screen.QuoteDetail> { backStack ->
+            val quoteDetail = backStack.toRoute<Screen.QuoteDetail>()
             QuoteDetailScreen(
                 viewModel = koinNavViewModel<QuoteDetailViewModel>(),
-                quote = quote,
+                quote = Quote(quoteDetail.id, quoteDetail.content, quoteDetail.author),
                 onNavigateBack = {
                     navHostController.navigateUp()
                 }
@@ -79,7 +71,7 @@ fun AppNavigation(
                 modifier = Modifier.fillMaxSize(),
                 viewModel = koinNavViewModel<HomeViewModel>(),
                 onNavigateToQuoteDetails = {
-                    navHostController.navigate(Screen.QuoteDetail.getRoute(quote = it))
+                    navHostController.navigate(Screen.QuoteDetail(it.id, it.content, it.author))
                 },
                 onNavigateToRandomQuote = {
                     navHostController.navigate(Screen.RandomQuote)
