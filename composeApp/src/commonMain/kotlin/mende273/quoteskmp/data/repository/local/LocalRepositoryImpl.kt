@@ -15,19 +15,11 @@ class LocalRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher
 ) : LocalRepository {
 
-    override suspend fun getAllFavouriteQuotes(): Flow<List<Quote>> =
-        withContext(ioDispatcher) {
-            localDataSource
-                .selectAll()
-                .mapToQuotes()
-        }
+    override fun getAllFavouriteQuotes(): Flow<List<Quote>> =
+        localDataSource.selectAll().mapToQuotes()
 
-    override suspend fun getFavouriteQuote(id: Long): Flow<Quote?> =
-        withContext(ioDispatcher) {
-            localDataSource
-                .selectById(id)
-                .mapToQuote()
-        }
+    override fun getFavouriteQuote(id: Long): Flow<Quote?> =
+        localDataSource.selectById(id).mapToQuote()
 
     override suspend fun addFavouriteQuote(quote: Quote) {
         withContext(ioDispatcher) {
