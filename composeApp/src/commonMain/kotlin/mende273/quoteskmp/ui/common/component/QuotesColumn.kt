@@ -13,7 +13,9 @@ fun QuotesColumn(
     quotes: List<Quote>,
     onNavigateToQuoteDetails: (Quote) -> Unit
 ) {
-    LazyColumn(verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.normal)) {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.normal)
+    ) {
         items(quotes) { quote ->
             SmallQuoteCard(
                 quote = quote,

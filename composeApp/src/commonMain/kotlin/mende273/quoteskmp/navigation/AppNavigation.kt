@@ -1,6 +1,8 @@
 package mende273.quoteskmp.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -24,7 +26,8 @@ import org.koin.core.annotation.KoinExperimentalAPI
 @OptIn(KoinExperimentalAPI::class)
 @Composable
 fun AppNavigation(
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    innerPaddingValues: PaddingValues
 ) {
     NavHost(
         navHostController,
@@ -32,7 +35,7 @@ fun AppNavigation(
     ) {
         composable<Screen.Favourites> {
             FavouritesScreen(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.padding(bottom = innerPaddingValues.calculateBottomPadding()),
                 viewModel = koinNavViewModel<FavouritesViewModel>(),
                 onNavigateToQuoteDetails = {
                     navHostController.navigate(Screen.QuoteDetail(it.id, it.content, it.author))

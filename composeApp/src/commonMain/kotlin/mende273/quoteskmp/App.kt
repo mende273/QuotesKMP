@@ -47,9 +47,10 @@ fun App() {
 
         QuotesKmpTheme {
             Scaffold(
-                content = {
+                content = { innerPaddingValues ->
                     AppNavigation(
-                        navHostController = navController
+                        navHostController = navController,
+                        innerPaddingValues = innerPaddingValues
                     )
                 },
                 bottomBar = {

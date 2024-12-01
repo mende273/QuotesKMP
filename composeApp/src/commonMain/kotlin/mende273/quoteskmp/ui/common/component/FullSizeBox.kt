@@ -10,14 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import mende273.quoteskmp.ui.theme.spacing
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun FullSizeBox(
     contentAlignment: Alignment = Alignment.Center,
     background: Color = MaterialTheme.colorScheme.background,
     outerPaddingValues: PaddingValues = PaddingValues(),
-    innerPaddingValues: PaddingValues = PaddingValues(MaterialTheme.spacing.normal),
+    horizontalPadding:PaddingValues = PaddingValues(horizontal = 16.dp),
     contents: @Composable () -> Unit
 ) {
     Box(
@@ -25,7 +25,7 @@ fun FullSizeBox(
             .background(background)
             .padding(outerPaddingValues)
             .fillMaxSize()
-            .padding(innerPaddingValues),
+            .padding(horizontalPadding),
         contentAlignment = contentAlignment
     ) {
         contents()

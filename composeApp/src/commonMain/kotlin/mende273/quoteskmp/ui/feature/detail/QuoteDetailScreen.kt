@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import mende273.quoteskmp.domain.model.Quote
 import mende273.quoteskmp.ui.common.component.FullSizeBox
@@ -20,6 +21,7 @@ import quoteskmp.composeapp.generated.resources.baseline_favorite_border_24
 
 @Composable
 fun QuoteDetailScreen(
+    modifier: Modifier = Modifier,
     viewModel: QuoteDetailViewModel,
     quote: Quote,
     onNavigateBack: () -> Unit
@@ -51,6 +53,7 @@ fun QuoteDetailScreen(
     }
 
     QuoteDetailScreenContents(
+        modifier = modifier,
         quote = quote,
         menuItem = menuItem,
         onToggleFavorite = viewModel::toggleFavourite,
@@ -60,12 +63,13 @@ fun QuoteDetailScreen(
 
 @Composable
 fun QuoteDetailScreenContents(
+    modifier:Modifier = Modifier,
     quote: Quote,
     menuItem: MenuItem? = null,
     onToggleFavorite: () -> Unit,
     onNavigateBack: () -> Unit
 ) {
-    Column {
+    Column(modifier = modifier) {
         TopBar(
             isBackButtonEnabled = true,
             onNavigateBack = onNavigateBack,
